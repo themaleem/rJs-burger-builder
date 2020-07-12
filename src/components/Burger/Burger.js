@@ -7,7 +7,6 @@ const Burger = (props) => {
     .map((item) => {
       return [...Array(props.ingredients[item])].map((_, i) => {
         return <BurgerIngredient key={item + i} type={item} />;
-        // console.log(i)
       });
     })
     .reduce((arr, el) => {
