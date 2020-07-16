@@ -1,11 +1,7 @@
 import React from "react";
 import Aux from "../../../hoc/Auxiliary";
 import Button from '../../UI/Button/Button';
-// import styled from 'styled-components';
 
-// const Span= styled.span`
-//     text-transorm:capitalize;
-// `
 const OrderSummary = (props) => {
   const order = props.ingredients;
   const ingredientSummary = Object.keys(order).map((item) => (
