@@ -11,7 +11,6 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import * as actionTypes from "../../store/actions";
 
-
 class BurgerBuilder extends Component {
   state = {
     purchasing: false,
@@ -38,21 +37,7 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    const queryParams = [];
-    for (let i in this.props.ingredients) {
-      queryParams.push(
-        encodeURIComponent(i) +
-          "=" +
-          encodeURIComponent(this.props.ingredients[i])
-      );
-    }
-    queryParams.push("price=" + this.state.totalPrice);
-    const queryString = queryParams.join("&");
-    this.props.history.push({
-      pathname: "/checkout",
-      search: "?" + queryString,
-    });
-    // this.props.history.push("/checkout")
+    this.props.history.push("/checkout");
   };
 
   render() {
@@ -97,7 +82,7 @@ class BurgerBuilder extends Component {
 const mapStateToProps = (state) => {
   return {
     ingredients: state.ingredients,
-    price: state.totalPrice
+    price: state.totalPrice,
   };
 };
 
