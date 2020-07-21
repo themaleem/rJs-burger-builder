@@ -82,7 +82,7 @@ class BurgerBuilder extends Component {
       );
     }
 
-    if (this.state.ordering) {
+    if (this.props.loading) {
       orderSummary = <Spinner />;
     }
     return (
@@ -100,9 +100,9 @@ class BurgerBuilder extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    ingredients: state.ingredients,
-    price: state.totalPrice,
-    error: state.error,
+    ingredients: state.burger.ingredients,
+    price: state.burger.totalPrice,
+    error: state.burger.error,
   };
 };
 
