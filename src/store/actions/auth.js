@@ -6,15 +6,16 @@ const authStart = () => {
     type: actionTypes.AUTH_START,
   };
 };
-const authSuccess = (authData) => {
+const authSuccess = (token,userId) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    authData: authData,
+    idToken:token,
+    userId:userId
   };
 };
 const authFailed = (error) => {
   return {
-    type: actionTypes.AUTH_FAILED,
+    type: actionTypes.AUTH_FAIL,
     error: error,
   };
 };
@@ -28,9 +29,6 @@ export const auth = (email, password, isSignup) => {
       returnSecureToken: true,
     };
 
-    // let url =
-    //   "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDZMCmpM9OGEo_g4YEV8-Xhd4h5i9ju6HA";
-
     let url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDZMCmpM9OGEo_g4YEV8-Xhd4h5i9ju6HA";
     if (!isSignup) {
@@ -40,8 +38,7 @@ export const auth = (email, password, isSignup) => {
     axios
       .post(url, authData)
       .then((response) => {
-        console.log(response);
-        dispatch(authSuccess(response.data, response.data.localId));
+        dispatch(authSuccess(response.data.idToken, response.data.localId));
       })
       .catch((err) => {
         console.log(err);
