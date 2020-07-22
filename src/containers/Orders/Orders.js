@@ -7,10 +7,8 @@ import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../store/actions/index";
 
 class Orders extends Component {
-
-
   componentDidMount() {
-    this.props.onFetchOrders()
+    this.props.onFetchOrders();
   }
 
   render() {
@@ -24,6 +22,7 @@ class Orders extends Component {
             key={order.id}
             ingredients={order.ingredients}
             price={order.price}
+            name={order.orderData.name}
           />
         ))}
       </div>
@@ -40,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onFetchOrders:()=> dispatch(actions.fetchOrders()),
+    onFetchOrders: () => dispatch(actions.fetchOrders()),
   };
 };
 export default connect(

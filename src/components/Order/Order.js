@@ -35,6 +35,9 @@ const order = (props) => {
       <p>
         Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong>
       </p>
+      <p>
+        Ordered by : {props.name}
+      </p>
     </div>
   );
 };
