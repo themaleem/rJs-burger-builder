@@ -15,7 +15,7 @@ import authReducers from "./store/reducers/auth";
 const rootReducer = combineReducers({
   burger: burgerReducers,
   order: orderReducers,
-  auth:authReducers
+  auth: authReducers,
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
