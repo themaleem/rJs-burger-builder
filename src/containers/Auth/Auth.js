@@ -41,13 +41,13 @@ const Auth = (props) => {
       touched: false,
     },
   });
-
+  const { buildingBurger, authRedirectPath, onSetAuthRedirectPath } = props;
+  
   useEffect(() => {
-    if (!props.buildingBurger && props.authRedirectPath !== "/") {
-      props.onSetAuthRedirectPath();
+    if (!buildingBurger && authRedirectPath !== "/") {
+      onSetAuthRedirectPath();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [buildingBurger, authRedirectPath, onSetAuthRedirectPath]);
 
   const switchAuthModeHandler = (event) => {
     event.preventDefault();

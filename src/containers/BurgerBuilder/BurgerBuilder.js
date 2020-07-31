@@ -14,7 +14,8 @@ import * as actions from "../../store/actions/index";
 const BurgerBuilder = (props) => {
   const [purchasing, setPurchasing] = useState(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(()=>props.initIngredients(),[]);
+  const {initIngredients}=props;
+  useEffect(()=>initIngredients(),[initIngredients]);
 
   const updatePurchaseState = (ingredients) => {
     const sum = Object.keys(ingredients)
